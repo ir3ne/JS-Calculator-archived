@@ -1,3 +1,64 @@
+@import url(//db.onlinewebfonts.com/c/000be6a5acfcd4e4a425e9f1bb6c80f0?family=Google+Sans);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
 body {
-  background-color: white;
-  color: black; }
+  font-family: "Google Sans Regular",sans-serif;
+  background: #EBEBF5;
+  color: #252A32;
+  width: 100%;
+  height: 100%; }
+
+.calc-container {
+  width: 375px;
+  margin: 2rem auto;
+  background: #F6F8F9;
+  border-radius: 26px;
+  padding: 36px 28px;
+  box-shadow: 0px 0px 30px 0px rgba(33, 30, 25, 0.1); }
+
+.calc-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  column-gap: 10px;
+  row-gap: 10px; }
+
+.calc-screen {
+  height: 220px;
+  padding: 28px 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; }
+  .calc-screen-output {
+    font-size: 3.6em;
+    line-height: 3.8em; }
+
+.calc-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #E9F0F4;
+  font-size: 1.4em;
+  line-height: 1.4em;
+  border-radius: 20px;
+  width: 100%; }
+  .calc-inputs:after {
+    content: "";
+    display: block;
+    padding-top: 100%; }
+  .calc-inputs.span-2 {
+    grid-column: 1 / span 2; }
+    .calc-inputs.span-2:after {
+      padding-top: 50%; }
+  .calc-inputs.is-clear {
+    background: #F8ECED;
+    color: #F64D56; }
+  .calc-inputs.is-operator {
+    background: #FF9500;
+    color: #ffffff; }
+  .calc-inputs.is-equal {
+    background: #31C973;
+    color: #ffffff; }

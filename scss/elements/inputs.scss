@@ -1,0 +1,39 @@
+.calc-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #E9F0F4;
+  font-size: 1.4em;
+  line-height: 1.4em;
+  border-radius: 20px;
+  width: 100%;
+
+  &:after {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+
+  &.span-2 {
+    grid-column: 1 / span 2;
+
+    &:after {
+      padding-top: 50%;
+    }
+  }
+
+  &.is-clear {
+    background: #F8ECED;
+    color: #F64D56; 
+  }
+
+  &.is-operator {
+    background: #FF9500;
+    color: #ffffff; 
+  }
+
+  &.is-equal {
+    background: #31C973;
+    color: #ffffff; 
+  }
+}

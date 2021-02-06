@@ -1,5 +1,4 @@
-body {
-  background-color: white;
-  color: black;
-}
-
+@import './utilities/generic.scss';
+@import './containers/container.scss';
+@import './elements/screen.scss';
+@import './elements/inputs.scss';
