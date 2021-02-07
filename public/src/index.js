@@ -1,43 +1,68 @@
 let calcInputs = document.querySelectorAll('.calc-inputs');
-let calcScreenOutput = document.querySelector('.calc-screen-output');
+let numbers = [];
+let operators = [];
+let actions = [];
+let initialOutput = 0;
 let output = null;
 
-const isNumber = function(element) {
-  return element.target.dataset.type === 'number' ? true : false;
-};
+const calcScreenOutput = document.querySelector('.calc-screen-output');
 
-const isAction = function (element) {
-  return element.target.dataset.type === 'clear' ? true : false;
+const inputsAssignment = function (allInputs) {
+  [...allInputs].forEach(i =>  {
+    switch (i.dataset.type) {
+      case 'number':
+        numbers.push(i);
+        break;
+      case 'operator':
+        operators.push(i);
+        break;
+      case 'action':
+        actions.push(i);
+        break;
+      default: 
+        break;
+    }
+  });
 }
 
-const isOperator = function (element) {
-  return element.target.dataset.type === 'operator' ? true : false;
+const renderInitialOutput = function () {
+  const outputNode = document.createTextNode(initialOutput);
+  calcScreenOutput.appendChild(outputNode);
 }
 
-const isEqual = function (element) {
-  return element.target.dataset.type === 'equal' ? true : false;
-}
+inputsAssignment(calcInputs);
+renderInitialOutput();
 
 const renderOutput = function (e) {
-  if (isNumber(e)) {
-    output = document.createTextNode(parseInt(e.target.textContent));
-    calcScreenOutput.appendChild(output);
-  } else if (isAction(e)) {
-    e.target.addEventListener('click', clearOutput);
-  } else if(isEqual(e)) {
-    console.log('equal');
-  } else {
-    output = document.createTextNode(e.target.textContent);
-    calcScreenOutput.appendChild(output);
+  let outputValue = parseInt(e.target.textContent);
+  if (parseInt(calcScreenOutput.textContent) === 0) {
+    calcScreenOutput.innerHTML = '';  
   }
+  output = document.createTextNode(outputValue);
+  calcScreenOutput.appendChild(output);
 }
 
 const clearOutput = function() {
   calcScreenOutput.textContent = '';
+  renderInitialOutput();
 }
 
-calcInputs.forEach(i => {
+const renderResult = function() {
+  calcScreenOutput.textContent = parseInt(calcScreenOutput.textContent);
+}
+
+numbers.forEach(i => {
   i.addEventListener('click', renderOutput);
 });
 
-calcActionClear.addEventListener('click', clearOutput);
+actions.forEach(i => {
+  if (i.classList.contains('is-clear')) {
+    i.addEventListener('click', clearOutput);
+  } else if (i.classList.contains('is-equal')) {
+    i.addEventListener('click', renderResult);
+  }
+});
+
+
+
+// calcActionClear.addEventListener('click', clearOutput);
