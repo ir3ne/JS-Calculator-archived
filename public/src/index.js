@@ -4,6 +4,7 @@ let operators = [];
 let actions = [];
 let initialOutput = 0;
 let output = null;
+let outputValue = null;
 
 const calcScreenOutput = document.querySelector('.calc-screen-output');
 
@@ -34,35 +35,46 @@ inputsAssignment(calcInputs);
 renderInitialOutput();
 
 const renderOutput = function (e) {
-  let outputValue = parseInt(e.target.textContent);
-  if (parseInt(calcScreenOutput.textContent) === 0) {
-    calcScreenOutput.innerHTML = '';  
+  if(e.target.textContent === '.') {
+    outputValue = e.target.textContent;
+  } else {
+    outputValue = parseInt(e.target.textContent);
+    if (parseInt(calcScreenOutput.textContent) === 0) {
+      calcScreenOutput.innerHTML = '';  
+    }
   }
   output = document.createTextNode(outputValue);
   calcScreenOutput.appendChild(output);
 }
 
-const clearOutput = function() {
+const clearOutput = function () {
   calcScreenOutput.textContent = '';
   renderInitialOutput();
 }
 
-const renderResult = function() {
+const renderResult = function () {
   calcScreenOutput.textContent = parseInt(calcScreenOutput.textContent);
 }
 
-numbers.forEach(i => {
-  i.addEventListener('click', renderOutput);
+const hightlightOutput = function () {
+  calcScreenOutput.classList.remove('is-highlight');
+  setTimeout(() => calcScreenOutput.classList.add('is-highlight'), 100);
+}
+
+numbers.forEach(n => {
+  n.addEventListener('click', renderOutput);
 });
 
-actions.forEach(i => {
-  if (i.classList.contains('is-clear')) {
-    i.addEventListener('click', clearOutput);
-  } else if (i.classList.contains('is-equal')) {
-    i.addEventListener('click', renderResult);
+actions.forEach(a => {
+  if (a.classList.contains('is-clear')) {
+    a.addEventListener('click', clearOutput);
+  } else if (a.classList.contains('is-equal')) {
+    a.addEventListener('click', renderResult);
   }
 });
 
-
+operators.forEach(o => {
+  o.addEventListener('click', hightlightOutput);
+})
 
 // calcActionClear.addEventListener('click', clearOutput);
