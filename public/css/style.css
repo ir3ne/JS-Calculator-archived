@@ -34,7 +34,8 @@ body {
   align-items: center; }
   .calc-screen-output {
     font-size: 3.6em;
-    line-height: 3.8em; }
+    line-height: 3.8em;
+    overflow: hidden; }
 
 .calc-inputs {
   display: flex;
@@ -44,7 +45,8 @@ body {
   font-size: 1.4em;
   line-height: 1.4em;
   border-radius: 20px;
-  width: 100%; }
+  width: 100%;
+  cursor: pointer; }
   .calc-inputs:after {
     content: "";
     display: block;
@@ -62,3 +64,12 @@ body {
   .calc-inputs.is-equal {
     background: #31C973;
     color: #ffffff; }
+
+.is-highlight {
+  animation: highlight .5s; }
+
+@keyframes highlight {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
