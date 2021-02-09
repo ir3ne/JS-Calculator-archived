@@ -1,2 +1,2 @@
 [] Add Babel
-[] Add theme mode storage
+[x] Add theme mode storage

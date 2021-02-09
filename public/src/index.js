@@ -16,10 +16,20 @@ let operationContext = {
 }
 
 const themeMode = document.getElementById('theme-mode');
+let localStorage = window.localStorage;
 
 themeMode.addEventListener('click', function() {
   document.body.classList.toggle('dark-theme');
+  if (document.body.classList.contains('dark-theme')) {
+    localStorage.setItem('theme', 'dark');
+  } else {
+    localStorage.clear();
+  }
 });
+
+const renderTheme = function () {
+  (localStorage.getItem('theme') === 'dark') && document.body.classList.add('dark-theme');
+}
 
 const calcScreenOutput = document.querySelector('.calc-screen-output');
 
@@ -52,6 +62,7 @@ const resetOutput = function () {
   output = 0;
 }
 
+renderTheme();
 inputsAssignment(calcInputs);
 renderInitialOutput();
 
