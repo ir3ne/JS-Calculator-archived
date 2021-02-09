@@ -84,6 +84,7 @@ const clearOutput = function () {
   renderInitialOutput();
   operationContext.num_1 = null;
   operationContext.num_2 = null;
+  operationContext.operation = null;
 }
 
 const percentOutput = function () {
@@ -106,7 +107,7 @@ const renderAction = function () {
 }
 
 const renderResult = function () {
-  if (operationContext.operation && operationContext.num_1 && operationContext.num_2) {
+  if (operationContext.operation && operationContext.num_1) {
     hightlightOutput();
     operationContext.num_2 = getOutput();
     result = runOperation(operationContext.operation, operationContext.num_1, operationContext.num_2)
@@ -148,15 +149,16 @@ actions.forEach(a => {
 
 const useOperator = function () {
   hightlightOutput();
-  
-  // qui aggiungere opzione se isOperationStart è true e l'operatore si comporta come un uguale
-  // if (operationContext.isOperationStart) {
-  //   return renderResult();
+  // // if(operationContext.isOperationStart)
+  // if (operationContext.operation) {
+  //   operationContext.num_1 = getOutput();
+  //   calcScreenOutput.textContent = runOperation(operationContext.operation, operationContext.num_1, operationContext.num_2);
+  // } else {
+  //   operationContext.num_1 = getOutput();
+  //   resetOutput();
   // }
-
-  // qui aggiungere opzione se isOperationStart è true e l'operatore si comporta come un uguale
   operationContext.num_1 = getOutput();
-  resetOutput();
+    resetOutput();
   operationContext.isOperationStart = true;
   switch (this.dataset.operation) {
     case 'sum':
