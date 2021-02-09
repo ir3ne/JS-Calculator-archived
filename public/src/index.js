@@ -12,6 +12,7 @@ let operationContext = {
   num_1: null,
   num_2: null,
   operation: null,
+  isActionStart: false
 }
 
 
@@ -55,15 +56,22 @@ const hightlightOutput = function () {
 }
 
 const renderOutput = function (e) {
+  if(e.target.textContent === calcScreenOutput.textContent) {
+    hightlightOutput();
+  }
   if(e.target.textContent === '.') {
     outputValue = e.target.textContent;
   } else {
     outputValue = parseFloat(e.target.textContent);
-    if (parseFloat(calcScreenOutput.textContent) === 0 || operationContext.isOperationStart) {
+    if (parseFloat(calcScreenOutput.textContent) === 0 || operationContext.isOperationStart || operationContext.isActionStart) {
       calcScreenOutput.innerHTML = '';  
 
       if (operationContext.isOperationStart) {
         operationContext.isOperationStart = false;
+      }
+
+      if (operationContext.isActionStart) {
+        operationContext.isActionStart = false;
       }
     }
   }
@@ -74,13 +82,40 @@ const renderOutput = function (e) {
 const clearOutput = function () {
   calcScreenOutput.textContent = '';
   renderInitialOutput();
+  operationContext.num_1 = null;
+  operationContext.num_2 = null;
+}
+
+const percentOutput = function () {
+  calcScreenOutput.textContent = getOutput() / 100;
+  operationContext.isOperationStart = true;
+}
+
+const renderAction = function () {
+  switch (this.dataset.action) {
+    case 'clear':
+      clearOutput();
+      break;
+    case 'percent':
+      percentOutput();
+      break;
+    case 'equal':
+      renderResult();
+      break;
+  }
 }
 
 const renderResult = function () {
-  hightlightOutput();
-  operationContext.num_2 = getOutput();
-  result = runOperation(operationContext.operation, operationContext.num_1, operationContext.num_2)
-  calcScreenOutput.textContent = parseFloat(result);
+  if (operationContext.operation && operationContext.num_1 && operationContext.num_2) {
+    hightlightOutput();
+    operationContext.num_2 = getOutput();
+    result = runOperation(operationContext.operation, operationContext.num_1, operationContext.num_2)
+    calcScreenOutput.textContent = parseFloat(result);
+  } else {
+    hightlightOutput();
+    calcScreenOutput.textContent = getOutput();
+  }
+  console.log(operationContext);
 }
 
 const sum = function (num_1, num_2) {
@@ -108,11 +143,7 @@ numbers.forEach(n => {
 });
 
 actions.forEach(a => {
-  if (a.classList.contains('is-clear')) {
-    a.addEventListener('click', clearOutput);
-  } else if (a.classList.contains('is-equal')) {
-    a.addEventListener('click', renderResult);
-  }
+  a.addEventListener('click', renderAction);
 });
 
 const useOperator = function () {
