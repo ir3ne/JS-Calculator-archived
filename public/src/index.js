@@ -15,6 +15,11 @@ let operationContext = {
   isActionStart: false
 }
 
+const themeMode = document.getElementById('theme-mode');
+
+themeMode.addEventListener('click', function() {
+  document.body.classList.toggle('dark-theme');
+});
 
 const calcScreenOutput = document.querySelector('.calc-screen-output');
 

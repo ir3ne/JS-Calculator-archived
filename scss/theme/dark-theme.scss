@@ -1,0 +1,27 @@
+.dark-theme {
+  #theme-mode {
+    fill: #fff;
+  }
+
+  .calc-container {
+    color: #fff;
+    background: #17181A; 
+  }
+
+  .calc-inputs {
+    background: #222427;
+
+    &.is-operator {
+      background: #FF9500;
+    }
+
+    &.is-equal {
+      background: #31C973;
+    }
+
+    &.is-clear {
+      background: #2D191E;
+      color: #F2444D;
+    }
+  }
+}
