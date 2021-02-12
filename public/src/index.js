@@ -109,7 +109,11 @@ const renderOutput = function (e) {
     hightlightOutput();
   }
   if(number === '.') {
-    outputValue = number;
+    if(!getOutput().toString().includes('.')) {
+      outputValue = number;
+    } else {
+      return;
+    }
   } else {
     outputValue = parseFloat(number);
     if (parseFloat(calcScreenOutput.textContent) === 0 || operationContext.isOperationStart || operationContext.isActionStart) {
