@@ -4,7 +4,6 @@ const operators = [];
 const actions = [];
 const initialOutput = 0;
 let result = null;
-// quale è la differenza tra output e outputValue?
 let output = null;
 let outputValue = null;
 let operationContext = {
@@ -65,6 +64,7 @@ const resetOutput = function () {
 renderTheme();
 inputsAssignment(calcInputs);
 renderInitialOutput();
+console.table(operationContext);
 
 const hightlightOutput = function () {
   calcScreenOutput.classList.remove('is-highlight');
@@ -81,10 +81,6 @@ const renderOutput = function (e) {
     outputValue = parseFloat(e.target.textContent);
     if (parseFloat(calcScreenOutput.textContent) === 0 || operationContext.isOperationStart || operationContext.isActionStart) {
       calcScreenOutput.innerHTML = '';  
-
-      if (operationContext.isOperationStart) {
-        operationContext.isOperationStart = false;
-      }
 
       if (operationContext.isActionStart) {
         operationContext.isActionStart = false;
@@ -134,13 +130,14 @@ const renderResult = function () {
   if (operationContext.operation && operationContext.num_1) {
     hightlightOutput();
     operationContext.num_2 = getOutput();
-    result = runOperation(operationContext.operation, operationContext.num_1, operationContext.num_2)
+    result = runOperation(operationContext.operation, operationContext.num_1, operationContext.num_2);
     calcScreenOutput.textContent = parseFloat(result);
   } else {
     hightlightOutput();
     calcScreenOutput.textContent = getOutput();
   }
-  console.log(operationContext);
+  operationContext.isOperationStart = false;
+  console.table(operationContext);
 }
 
 const sum = function (num_1, num_2) {
@@ -160,6 +157,20 @@ const division = function (num_1, num_2) {
 }
 
 const runOperation = function (operationType, num_1, num_2) {
+  switch (operationType) {
+    case 'sum':
+      operationType = sum;
+      break;
+    case 'subtraction':
+      operationType = subtraction;
+      break;
+    case 'multiplication':
+      operationType = multiplication;
+      break;
+    case 'division':
+      operationType = division;
+      break;
+  }
   return operationType(num_1, num_2);
 }
 
@@ -173,31 +184,29 @@ actions.forEach(a => {
 
 const useOperator = function () {
   hightlightOutput();
-  // // if(operationContext.isOperationStart)
-  // if (operationContext.operation) {
-  //   operationContext.num_1 = getOutput();
-  //   calcScreenOutput.textContent = runOperation(operationContext.operation, operationContext.num_1, operationContext.num_2);
-  // } else {
-  //   operationContext.num_1 = getOutput();
-  //   resetOutput();
-  // }
+
+  if(operationContext.isOperationStart) {
+    renderResult();
+  }
+
   operationContext.num_1 = getOutput();
-    resetOutput();
+  resetOutput();
   operationContext.isOperationStart = true;
   switch (this.dataset.operation) {
     case 'sum':
-      operationContext.operation = sum;
+      operationContext.operation = 'sum';
       break;
     case 'subtraction':
-      operationContext.operation = subtraction;
+      operationContext.operation = 'subtraction';
       break;
     case 'multiplication':
-      operationContext.operation = multiplication;
+      operationContext.operation = 'multiplication';
       break;
     case 'division':
-      operationContext.operation = division;
+      operationContext.operation = 'division';
       break;
   }
+  console.table(operationContext);
 }
 
 operators.forEach(o => {
