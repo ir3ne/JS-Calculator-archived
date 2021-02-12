@@ -108,6 +108,11 @@ const percentOutput = function () {
   operationContext.isOperationStart = true;
 }
 
+const negativePositiveOutput = function () {
+  hightlightOutput();
+  calcScreenOutput.textContent = - getOutput();
+} 
+
 const renderAction = function () {
   switch (this.dataset.action) {
     case 'clear':
@@ -118,6 +123,9 @@ const renderAction = function () {
       break;
     case 'equal':
       renderResult();
+      break;
+    case 'negativePositive':
+      negativePositiveOutput();
       break;
   }
 }

@@ -37,4 +37,16 @@
     background: #31C973;
     color: #ffffff; 
   }
+
+  &.is-negativepositive {
+    span {
+      &:first-child {
+        margin-top: -12px;
+      }
+
+      &:last-child {
+        margin-bottom: 10px;
+      }
+    }
+  }
 }

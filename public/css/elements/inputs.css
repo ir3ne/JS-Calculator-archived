@@ -6,7 +6,8 @@
   font-size: 1.4em;
   line-height: 1.4em;
   border-radius: 20px;
-  width: 100%; }
+  width: 100%;
+  cursor: pointer; }
   .calc-inputs:after {
     content: "";
     display: block;
@@ -24,3 +25,7 @@
   .calc-inputs.is-equal {
     background: #31C973;
     color: #ffffff; }
+  .calc-inputs.is-negativepositive span:first-child {
+    margin-top: -12px; }
+  .calc-inputs.is-negativepositive span:last-child {
+    margin-bottom: 10px; }

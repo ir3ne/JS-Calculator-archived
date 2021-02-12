@@ -65,6 +65,10 @@ body {
   .calc-inputs.is-equal {
     background: #31C973;
     color: #ffffff; }
+  .calc-inputs.is-negativepositive span:first-child {
+    margin-top: -12px; }
+  .calc-inputs.is-negativepositive span:last-child {
+    margin-bottom: 10px; }
 
 .is-highlight {
   animation: highlight .5s; }
