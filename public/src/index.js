@@ -1,4 +1,6 @@
 const calcInputs = document.querySelectorAll('.calc-inputs');
+let number = null;
+let operator = null;
 const numbers = [];
 const operators = [];
 const actions = [];
@@ -61,9 +63,33 @@ const resetOutput = function () {
   output = 0;
 }
 
+const keyNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const keyActions = ['%', 'c'];
+const keyOperators = ['+', '-', '*', '/'];
+const keyEqual = 'Enter';
+
+const keydownSupport = function () {
+  document.addEventListener('keydown', function (e) {
+    if (keyNumbers.includes(parseInt(e.key))) {
+      renderOutput(parseInt(e.key));
+    } else if (keyActions.includes(e.key)) {
+      if (e.key === '%') {
+        percentOutput();
+      } else if (e.key.toLowerCase() === 'c') {
+        clearOutput();
+      }
+    } else if (keyOperators.includes(e.key)) {
+      useOperator(e.key);
+    } else if (e.key === keyEqual) {
+      renderResult();
+    }
+  });
+}
+
 renderTheme();
 inputsAssignment(calcInputs);
 renderInitialOutput();
+keydownSupport()
 console.table(operationContext);
 
 const hightlightOutput = function () {
@@ -72,13 +98,20 @@ const hightlightOutput = function () {
 }
 
 const renderOutput = function (e) {
-  if(e.target.textContent === calcScreenOutput.textContent) {
+  if (!e.target) {
+    number = e;
+  } 
+  else {
+    number = e.target.textContent;
+  }
+
+  if(number === calcScreenOutput.textContent) {
     hightlightOutput();
   }
-  if(e.target.textContent === '.') {
-    outputValue = e.target.textContent;
+  if(number === '.') {
+    outputValue = number;
   } else {
-    outputValue = parseFloat(e.target.textContent);
+    outputValue = parseFloat(number);
     if (parseFloat(calcScreenOutput.textContent) === 0 || operationContext.isOperationStart || operationContext.isActionStart) {
       calcScreenOutput.innerHTML = '';  
 
@@ -182,7 +215,13 @@ actions.forEach(a => {
   a.addEventListener('click', renderAction);
 });
 
-const useOperator = function () {
+const useOperator = function (e) {
+  if(keyOperators.includes(e)) {
+    operator = e;
+  } else {
+    operator = this.dataset.operation;
+  }
+
   hightlightOutput();
 
   if(operationContext.isOperationStart) {
@@ -192,17 +231,17 @@ const useOperator = function () {
   operationContext.num_1 = getOutput();
   resetOutput();
   operationContext.isOperationStart = true;
-  switch (this.dataset.operation) {
-    case 'sum':
+  switch (operator) {
+    case 'sum', '+':
       operationContext.operation = 'sum';
       break;
-    case 'subtraction':
+    case 'subtraction', '-':
       operationContext.operation = 'subtraction';
       break;
-    case 'multiplication':
+    case 'multiplication', '*':
       operationContext.operation = 'multiplication';
       break;
-    case 'division':
+    case 'division', '/':
       operationContext.operation = 'division';
       break;
   }
