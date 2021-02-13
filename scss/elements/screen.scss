@@ -10,4 +10,8 @@
     line-height: 3.8em;
     overflow: hidden;
   }
+
+  @media (max-width: 600px) {
+    height: calc(100vh / 4);
+  }
 }

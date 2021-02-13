@@ -8,6 +8,11 @@
   border-radius: 20px;
   width: 100%;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    opacity: .5;
+  }
 
   &:after {
     content: "";

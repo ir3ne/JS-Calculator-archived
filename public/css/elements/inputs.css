@@ -7,7 +7,10 @@
   line-height: 1.4em;
   border-radius: 20px;
   width: 100%;
-  cursor: pointer; }
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent; }
+  .calc-inputs:active {
+    opacity: .5; }
   .calc-inputs:after {
     content: "";
     display: block;
