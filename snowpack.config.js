@@ -1,14 +1,11 @@
 module.exports = {
   "mount": {
-    "src": "/dist",
-    "public": "/"
+    "src": "/",
+    "public": "/dist"
   },
   plugins: [
     [
-      '@snowpack/plugin-sass',
-      {
-        /* see options below */
-      },
+      '@snowpack/plugin-sass'
     ],
   ],
 };

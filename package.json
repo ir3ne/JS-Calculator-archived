@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "snowpack dev && node-sass -w scss/ -o public/css/ --recursive",
+    "start": "snowpack dev",
     "build": "snowpack build",
-    "sass": "node-sass -w scss/ -o public/css/ --recursive"
+    "sass": "node-sass -w scss/ -o src/css/ --recursive"
   },
   "author": "irene",
   "license": "ISC",
