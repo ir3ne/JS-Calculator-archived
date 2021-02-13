@@ -6,7 +6,10 @@ module.exports = {
   plugins: [
     [
       '@snowpack/plugin-sass',
-      '@snowpack/plugin-babel'
+      '@snowpack/plugin-babel',
+      {
+        "input": ['.js']
+      }
     ],
   ],
 };
