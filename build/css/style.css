@@ -54,7 +54,7 @@ body {
     overflow: hidden; }
   @media (max-width: 600px) {
     .calc-screen {
-      height: calc(100vh / 4); } }
+      height: calc(100vh / 5); } }
 
 .calc-inputs {
   display: flex;
