@@ -97,6 +97,10 @@ const hightlightOutput = function () {
   setTimeout(() => calcScreenOutput.classList.add('is-highlight'), 0);
 }
 
+const isFloat = function () {
+  return getOutput().toString().includes('.');
+};
+
 const renderOutput = function (e) {
   if (!e.target) {
     number = e;
@@ -109,7 +113,7 @@ const renderOutput = function (e) {
     hightlightOutput();
   }
   if(number === '.') {
-    if(!getOutput().toString().includes('.')) {
+    if(!isFloat()) {
       outputValue = number;
     } else {
       return;
