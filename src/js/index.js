@@ -91,7 +91,6 @@ renderTheme();
 inputsAssignment(calcInputs);
 renderInitialOutput();
 keydownSupport()
-console.table(operationContext);
 
 const hightlightOutput = function () {
   calcScreenOutput.classList.remove('is-highlight');
@@ -185,7 +184,6 @@ const renderResult = function () {
   }
   operationContext.isOperationStart = false;
   operationContext.renderResult = true;
-  console.table(operationContext);
 }
 
 const sum = function (num_1, num_2) {
@@ -264,7 +262,6 @@ const useOperator = function (e) {
       operationContext.operation = 'division';
       break;
   }
-  console.table(operationContext);
 }
 
 operators.forEach(o => {
