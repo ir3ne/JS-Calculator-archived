@@ -6,6 +6,6 @@
 [x] Make sure you don’t let them type more than one though: 12.3.56.5.
 [x] Add keyboard support
 [x] Favicon
-[] after equal bring back the output to the initial value
-[] not keyboard calculation is broken
+[x] after equal bring back the output to the initial value
+[x] not keyboard calculation is broken
 [] change folder structure and name, not public but src

@@ -13,7 +13,8 @@ let operationContext = {
   num_1: null,
   num_2: null,
   operation: null,
-  isActionStart: false
+  isActionStart: false,
+  renderResult: false
 }
 
 const themeMode = document.getElementById('theme-mode');
@@ -109,6 +110,11 @@ const renderOutput = function (e) {
     number = e.target.textContent;
   }
 
+  if (operationContext.renderResult) {
+    calcScreenOutput.innerHTML = ''
+    operationContext.renderResult = false;
+  }
+  
   if(number === calcScreenOutput.textContent) {
     hightlightOutput();
   }
@@ -178,6 +184,7 @@ const renderResult = function () {
     calcScreenOutput.textContent = getOutput();
   }
   operationContext.isOperationStart = false;
+  operationContext.renderResult = true;
   console.table(operationContext);
 }
 
