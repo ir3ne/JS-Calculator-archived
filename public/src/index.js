@@ -240,16 +240,20 @@ const useOperator = function (e) {
   resetOutput();
   operationContext.isOperationStart = true;
   switch (operator) {
-    case 'sum', '+':
+    case 'sum':
+    case '+':
       operationContext.operation = 'sum';
       break;
-    case 'subtraction', '-':
+    case 'subtraction':
+    case '-':
       operationContext.operation = 'subtraction';
       break;
-    case 'multiplication', '*':
+    case 'multiplication':
+    case '*':
       operationContext.operation = 'multiplication';
       break;
-    case 'division', '/':
+    case 'division':
+    case '/':
       operationContext.operation = 'division';
       break;
   }
