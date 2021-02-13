@@ -1,0 +1,16 @@
+.dark-theme #theme-mode {
+  fill: #fff; }
+
+.dark-theme .calc-container {
+  color: #fff;
+  background: #17181A; }
+
+.dark-theme .calc-inputs {
+  background: #222427; }
+  .dark-theme .calc-inputs.is-operator {
+    background: #FF9500; }
+  .dark-theme .calc-inputs.is-equal {
+    background: #31C973; }
+  .dark-theme .calc-inputs.is-clear {
+    background: #2D191E;
+    color: #F2444D; }

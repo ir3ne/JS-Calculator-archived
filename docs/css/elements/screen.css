@@ -1,0 +1,13 @@
+.calc-screen {
+  height: 220px;
+  padding: 28px 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; }
+  .calc-screen-output {
+    font-size: 3.6em;
+    line-height: 3.8em;
+    overflow: hidden; }
+  @media (max-width: 600px) {
+    .calc-screen {
+      height: calc(100vh / 4); } }
