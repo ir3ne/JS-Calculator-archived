@@ -174,7 +174,7 @@ const renderAction = function () {
 }
 
 const renderResult = function () {
-  if (operationContext.operation && operationContext.num_1) {
+  if (operationContext.operation && operationContext.num_1 || operationContext.num_1 === 0) {
     hightlightOutput();
     operationContext.num_2 = getOutput();
     result = runOperation(operationContext.operation, operationContext.num_1, operationContext.num_2);
