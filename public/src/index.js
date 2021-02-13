@@ -99,7 +99,7 @@ const hightlightOutput = function () {
 }
 
 const isFloat = function () {
-  return getOutput().toString().includes('.');
+  return calcScreenOutput.textContent.toString().includes('.');
 };
 
 const renderOutput = function (e) {
