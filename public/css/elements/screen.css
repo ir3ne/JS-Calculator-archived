@@ -10,5 +10,5 @@
     overflow: hidden; }
   @media (max-width: 600px) {
     .calc-screen {
-      height: calc(100vh / 6);
+      height: calc(100vh / 7);
       padding-top: 10px; } }
