@@ -8,5 +8,5 @@
 [x] Favicon
 [x] after equal bring back the output to the initial value
 [x] not keyboard calculation is broken
-[] change folder structure and name, not public but src
+[x] change folder structure and name, not public but src
 [] keybord events has to show active pseudo class on buttons
