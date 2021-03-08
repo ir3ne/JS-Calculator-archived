@@ -40,7 +40,7 @@ body {
   row-gap: 10px; }
   @media (max-width: 600px) {
     .calc-actions {
-      height: calc(100vh / 4); } }
+      height: calc(100vh / 3); } }
 
 .calc-screen {
   height: 220px;
@@ -54,7 +54,7 @@ body {
     overflow: hidden; }
   @media (max-width: 600px) {
     .calc-screen {
-      height: calc(100vh / 7);
+      height: calc(100vh / 4);
       padding-top: 10px; } }
 
 .calc-inputs {
