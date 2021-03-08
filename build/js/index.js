@@ -117,6 +117,7 @@ const renderOutput = function (e) {
   if(number === calcScreenOutput.textContent) {
     hightlightOutput();
   }
+
   if(number === '.') {
     if(!isFloat()) {
       outputValue = number;
@@ -127,7 +128,7 @@ const renderOutput = function (e) {
     outputValue = parseFloat(number);
     if (parseFloat(calcScreenOutput.textContent) === 0 || operationContext.isOperationStart || operationContext.isActionStart) {
       calcScreenOutput.innerHTML = '';  
-
+      operationContext.isOperationStart = false;
       if (operationContext.isActionStart) {
         operationContext.isActionStart = false;
       }
