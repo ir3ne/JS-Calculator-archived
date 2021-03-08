@@ -127,7 +127,7 @@ const renderOutput = function (e) {
     outputValue = parseFloat(number);
     if (parseFloat(calcScreenOutput.textContent) === 0 || operationContext.isOperationStart || operationContext.isActionStart) {
       calcScreenOutput.innerHTML = '';  
-
+      operationContext.isOperationStart = false;
       if (operationContext.isActionStart) {
         operationContext.isActionStart = false;
       }
