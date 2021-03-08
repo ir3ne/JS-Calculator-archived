@@ -1,4 +1,4 @@
-[] Add Babel
+[x] Add Babel
 [x] Add theme mode storage
 [x] 0 + etc is not working
 [x] Mobile style full screen
@@ -9,4 +9,4 @@
 [x] after equal bring back the output to the initial value
 [x] not keyboard calculation is broken
 [x] change folder structure and name, not public but src
-[] keybord events has to show active pseudo class on buttons
+[x] keybord events has to show active pseudo class on buttons
